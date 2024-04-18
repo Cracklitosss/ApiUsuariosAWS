@@ -3,6 +3,7 @@ dotenv.config();
 
 import express from 'express';
 import mongoose from 'mongoose';
+import cors from 'cors';  // Importa CORS
 import './user/domain/User';
 import './user/domain/SensorData';
 
@@ -16,6 +17,18 @@ mongoose.connect(MONGO_URI)
     .catch(err => console.log('MongoDB connection error:', err));
 
 app.use(express.json());
+
+app.use(cors({
+    origin: '*', // Asegúrate de ajustar esto si usas credenciales
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+    credentials: true // Recuerda revisar la compatibilidad de esta configuración con el origen
+}));
+
+
+// Habilitar CORS para todos los orígenes
+app.use(cors());
+
 app.use('/api', userRoutes);
 
 const PORT = process.env.PORT || 3001;
