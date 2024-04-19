@@ -3,7 +3,7 @@ dotenv.config();
 
 import express from 'express';
 import mongoose from 'mongoose';
-import cors from 'cors';  // Importa CORS
+import cors from 'cors';
 import './user/domain/User';
 import './user/domain/SensorData';
 
@@ -11,7 +11,7 @@ import userRoutes from './user/infrastructure/UserRoutes';
 const app = express();
 
 // Conexión a MongoDB
-const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://Carlos:12345@cluster0.ha8qnnw.mongodb.net/Pruebamulti';
+const MONGO_URI = 'mongodb+srv://Carlos:12345@cluster0.ha8qnnw.mongodb.net/Pruebamulti';
 mongoose.connect(MONGO_URI)
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.log('MongoDB connection error:', err));
@@ -19,15 +19,11 @@ mongoose.connect(MONGO_URI)
 app.use(express.json());
 
 app.use(cors({
-    origin: '*', // Asegúrate de ajustar esto si usas credenciales
+    origin: '*',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
-    credentials: true // Recuerda revisar la compatibilidad de esta configuración con el origen
+    credentials: true
 }));
-
-
-// Habilitar CORS para todos los orígenes
-app.use(cors());
 
 app.use('/api', userRoutes);
 

@@ -24,7 +24,7 @@ export class LoginUser {
 
       const token = this.authService.generateToken(user);
       this.webSocketService.sendToken(token);
-      return { user, token };  // Aquí podrías decidir qué información del usuario se debe enviar al frontend
+      return { user, token, };  //información del usuario se debe enviar al frontend
     } catch (error: unknown) {
       if (error instanceof Error) {
         throw new Error('Login error: ' + error.message);

@@ -9,11 +9,11 @@ export class AuthService {
     const payload = {
       id: user._id,
       email: user.email,
-      IdEsp: user.IdEsp  // Asumiendo que `IdEsp` está en el modelo de usuario
+      IdEsp: user.IdEsp 
     };
     const token = jwt.sign(payload, this.secretKey, { expiresIn: this.expiration });
     
-    //console.log("JWT Payload:", payload);  // Mostrar el payload en la consola
+    console.log("JWT Payload:", payload);  // Mostrar el payload en la consola
 
     return token;
   }
@@ -21,11 +21,11 @@ export class AuthService {
   verifyToken(token: string): string | object {
     try {
       const decoded = jwt.verify(token, this.secretKey);
-      console.log("Decoded JWT:", decoded);  // Mostrar la información decodificada del token
+      console.log("Decoded JWT:", decoded);
       return decoded;
     } catch (error) {
       console.error("Error verifying token:", error);
-      throw error;  // Puedes decidir lanzar el error o manejarlo de otra forma
+      throw error; 
     }
   }  
 }

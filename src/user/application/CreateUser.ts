@@ -6,10 +6,8 @@ export class CreateUser {
 
   async execute(userData: IUser) {
     try {
-      // Encriptar la contraseña usando EncryptionService
       const hashedPassword = await this.encryptionService.hashPassword(userData.password);
 
-      // Crear un nuevo usuario con la contraseña encriptada
       const newUser = new UserModel({
         email: userData.email,
         name: userData.name,
@@ -20,7 +18,6 @@ export class CreateUser {
         sensorData: userData.sensorData
       });
 
-      // Guardar el usuario en la base de datos
       await newUser.save();
       
       return newUser;
