@@ -7,7 +7,7 @@ import cors from 'cors';
 import './user/domain/User';
 import './user/domain/SensorData';
 
-import userRoutes from './user/infrastructure/UserRoutes';
+import userRoutes from './user/infrastructure/routes/UserRoutes';
 const app = express();
 
 // Conexión a MongoDB

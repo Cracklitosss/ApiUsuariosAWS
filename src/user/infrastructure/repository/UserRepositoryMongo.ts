@@ -1,5 +1,5 @@
-import { IUserRepository } from '../domain/IUserRepository';
-import UserModel, { IUser } from '../domain/User';
+import { IUserRepository } from '../../domain/IUserRepository';
+import UserModel, { IUser } from '../../domain/User';
 
 export class UserRepositoryMongo implements IUserRepository {
   async create(user: IUser): Promise<IUser> {

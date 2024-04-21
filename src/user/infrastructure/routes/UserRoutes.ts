@@ -1,21 +1,21 @@
 import express from 'express';
-import { CreateUser } from '../application/CreateUser';
-import { DeleteUser } from '../application/DeleteUser';
-import { GetAllUsers } from '../application/GetAllUsers';
-import { GetUserById } from '../application/GetUserById';
-import { LoginUser } from '../application/LoginUser';
-import { GetAllUsersWithSensorsController } from './controllers/GetAllUsersWithSensorsController';
-import { GetAllUsersWithSensors } from '../application/GetAllUsersWithSensors';
-import { GetUserWithSensorsController } from './controllers/GetUserWithSensorsController';
-import { GetUserWithSensors } from '../application/GetUserWithSensors';
-import { CreateUserController } from './controllers/CreateUserController';
-import { DeleteUserController } from './controllers/DeleteUserController';
-import { GetAllUsersController } from './controllers/GetAllUsersController';
-import { GetUserByIdController } from './controllers/GetUserByIdController';
-import { LoginUserController } from './controllers/LoginUserController';
-import { EncryptionService } from './services/EncryptionService';
-import { AuthService } from './services/AuthService';
-import { WebSocketService } from './services/WebSocketService';
+import { CreateUser } from '../../application/CreateUser';
+import { DeleteUser } from '../../application/DeleteUser';
+import { GetAllUsers } from '../../application/GetAllUsers';
+import { GetUserById } from '../../application/GetUserById';
+import { LoginUser } from '../../application/LoginUser';
+import { GetAllUsersWithSensorsController } from '../controllers/GetAllUsersWithSensorsController';
+import { GetAllUsersWithSensors } from '../../application/GetAllUsersWithSensors';
+import { GetUserWithSensorsController } from '../controllers/GetUserWithSensorsController';
+import { GetUserWithSensors } from '../../application/GetUserWithSensors';
+import { CreateUserController } from '../controllers/CreateUserController';
+import { DeleteUserController } from '../controllers/DeleteUserController';
+import { GetAllUsersController } from '../controllers/GetAllUsersController';
+import { GetUserByIdController } from '../controllers/GetUserByIdController';
+import { LoginUserController } from '../controllers/LoginUserController';
+import { EncryptionService } from '../services/EncryptionService';
+import { AuthService } from '../services/AuthService';
+import { WebSocketService } from '../services/WebSocketService';
 const router = express.Router();
 
 // Services
@@ -28,7 +28,7 @@ const createUser = new CreateUser(encryptionService);
 const deleteUser = new DeleteUser();
 const getAllUsers = new GetAllUsers();
 const getUserById = new GetUserById();
-const loginUser = new LoginUser(encryptionService, authService, webSocketService);
+const loginUser = new LoginUser(encryptionService, authService, /*webSocketService*/);
 const getAllUsersWithSensorsService = new GetAllUsersWithSensors();
 const getUserWithSensorsService = new GetUserWithSensors();
 
